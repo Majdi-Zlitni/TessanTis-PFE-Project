@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ExtendedXmlSerializer" Version="3.10.0" />
+    <PackageReference Include="ExtentReports" Version="5.0.4" />
+    <PackageReference Include="System.Drawing.Common" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TessanTIS.Common.Core.Abstraction\TessanTIS.Common.Core.Abstraction.csproj" />
+    <ProjectReference Include="..\TessanTIS.Common.Core.Impl.Configuration\TessanTIS.Common.Core.Impl.Configuration.csproj" />
+  </ItemGroup>
+
+</Project>

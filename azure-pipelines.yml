@@ -1,0 +1,41 @@
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+pool:
+    vmImage: 'windows-latest'
+
+trigger:
+- master
+
+variables:
+  buildConfiguration: 'Release'
+  
+  ProjectName: 'APProject'
+  #ProjectDataName: 'FIT.GTAF.IJCORE.Data.Impl'
+  #ProjectModuleName: 'TCO'
+  #ProjectVersion: 'V8.5'
+  ProjectDataWorkflowReleasePath: '$(Build.SourcesDirectory)/$(ProjectDataName)/bin/Release'
+  ProjectReleasePath: '$(Build.SourcesDirectory)/$(ProjectName)/bin/Release'
+  ProjectArchiveFileName : '$(ProjectName)_$(ProjectVersion).zip'
+  ProjectWorkFlowArchiveFileName : '$(ProjectModuleName)WorkFlowExecution_$(ProjectVersion).zip'
+  ProjectDataArchiveFileName : '$(ProjectModuleName)Data_$(ProjectVersion).zip'
+  projectArtifactOutputName : '$(ProjectName)_ReleaseArtifact'
+
+steps:
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '*.sln'
+    arguments: '--configuration Release'
+- task: CopyFiles@2
+  inputs:
+     SourceFolder: '$(ProjectReleasePath)/netcoreapp3.1'
+     Contents: '**'
+     TargetFolder: '$(ProjectReleasePath)/$(ProjectName)/bin'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(ProjectReleasePath)/$(ProjectName)'
+    ArtifactName: '$(projectArtifactOutputName)'
+    publishLocation: 'Container'

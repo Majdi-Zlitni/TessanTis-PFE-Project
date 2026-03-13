@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TessanTIS.AP.Pages.Abstraction\TessanTIS.AP.Pages.Abstraction.csproj" />
+    <ProjectReference Include="..\TessanTIS.Common.Core.Impl.Configuration\TessanTIS.Common.Core.Impl.Configuration.csproj" />
+    <ProjectReference Include="..\TessanTIS.Common.Core.Pages.Impl.Base\TessanTIS.Common.Core.Pages.Impl.Base.csproj" />
+  </ItemGroup>
+
+</Project>

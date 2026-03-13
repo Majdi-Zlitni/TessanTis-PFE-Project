@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TessanTIS.AP.Workflow.Abstraction\TessanTIS.AP.Workflow.Abstraction.csproj" />
+    <ProjectReference Include="..\TessanTIS.AP.Pages.Abstraction\TessanTIS.AP.Pages.Abstraction.csproj" />
+    <ProjectReference Include="..\TessanTIS.AP.Pages.Impl\TessanTIS.AP.Pages.Impl.csproj" />
+    <ProjectReference Include="..\TessanTIS.AP.Workflow.Impl.Base\TessanTIS.AP.Workflow.Impl.Base.csproj" />
+  </ItemGroup>
+
+</Project>

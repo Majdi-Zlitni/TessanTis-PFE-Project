@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RunSettins>
+	<TestRunParameters>
+		<Parameter name="baseUrl" value="http://automationpractice.com/"/>
+		<Parameter name="applicationVersion" value="V1"/>
+	</TestRunParameters>
+</RunSettins>
