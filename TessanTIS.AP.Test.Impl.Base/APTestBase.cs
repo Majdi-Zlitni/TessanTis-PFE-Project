@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using NUnit.Framework;
 using TessanTIS.AP.Data.Abstraction;
 using TessanTIS.AP.Data.Impl;

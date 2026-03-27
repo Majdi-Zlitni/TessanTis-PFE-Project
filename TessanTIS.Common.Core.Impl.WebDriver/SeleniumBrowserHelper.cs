@@ -588,7 +588,9 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
         public void init()
         {
             if (!OperatingSystem.IsWindows())
-                throw new PlatformNotSupportedException("Browser discovery via registry is only supported on Windows.");
+                throw new PlatformNotSupportedException(
+                    "Browser discovery via registry is only supported on Windows."
+                );
 
             List<Browser> browserList = BrowserUtility.GetBrowsers();
             switch (browser)
@@ -606,40 +608,13 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
 
                 case "Chrome":
                     ChromeOptions chromeoptions = new ChromeOptions();
-                    Browser chromeBrowser = browserList.FirstOrDefault(x =>
-                        x.Name.Contains("Chrome")
+                    webDriver = new ChromeDriver(
+                        ChromeDriverService.CreateDefaultService(),
+                        chromeoptions,
+                        TimeSpan.FromMinutes(3)
                     );
-                    string chromeVersion = chromeBrowser?.Version?.Split(".")[0];
-                    if (
-                        !string.IsNullOrEmpty(chromeVersion)
-                        && Directory.Exists($".\\Drivers\\Chrome\\{chromeVersion}")
-                    )
-                    {
-                        webDriver = new ChromeDriver(
-                            $".\\Drivers\\Chrome\\{chromeVersion}",
-                            chromeoptions,
-                            TimeSpan.FromMinutes(3)
-                        );
-                    }
-                    else if (Directory.Exists($".\\Drivers\\Chrome\\Default"))
-                    {
-                        webDriver = new ChromeDriver(
-                            ".\\Drivers\\Chrome\\Default",
-                            chromeoptions,
-                            TimeSpan.FromMinutes(3)
-                        );
-                    }
-                    else
-                    {
-                        webDriver = new ChromeDriver(
-                            ChromeDriverService.CreateDefaultService(),
-                            chromeoptions,
-                            TimeSpan.FromMinutes(3)
-                        );
-                    }
 
                     ngWebDriver = new NgWebDriver(webDriver);
-
                     break;
 
                 case "Firefox":

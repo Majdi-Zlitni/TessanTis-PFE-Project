@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TessanTIS.Common.Core.Test.Impl.Base\TessanTIS.Common.Core.Test.Impl.Base.csproj" />
+    <ProjectReference Include="..\TessanTIS.Common.Core.Impl.Data\TessanTIS.Common.Core.Impl.Data.csproj" />
+    <ProjectReference Include="..\TessanTIS.OrangeHRM.Data.Abstraction\TessanTIS.OrangeHRM.Data.Abstraction.csproj" />
+    <ProjectReference Include="..\TessanTIS.OrangeHRM.Data.Impl\TessanTIS.OrangeHRM.Data.Impl.csproj" />
+    <ProjectReference Include="..\TessanTIS.OrangeHRM.Workflow.Abstraction\TessanTIS.OrangeHRM.Workflow.Abstraction.csproj" />
+    <ProjectReference Include="..\TessanTIS.OrangeHRM.Workflow.Impl\TessanTIS.OrangeHRM.Workflow.Impl.csproj" />
+  </ItemGroup>
+
+</Project>

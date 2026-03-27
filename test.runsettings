@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<RunSettins>
+<RunSettings>
 	<TestRunParameters>
-		<Parameter name="baseUrl" value="http://automationpractice.com/"/>
+		<Parameter name="baseUrl" value="https://opensource-demo.orangehrmlive.com"/>
 		<Parameter name="applicationVersion" value="V1"/>
 	</TestRunParameters>
-</RunSettins>
+</RunSettings>

@@ -110,7 +110,7 @@ namespace TessanTIS.Common.Core.Test.Impl.Base
         private void InitializeParameters()
         {
             extent.Info("Start Initialize Parameters");
-            BaseUrl = "http://automationpractice.com/"; // TestContext.Parameters["baseUrl"];
+            BaseUrl = TestContext.Parameters["baseUrl"];
             extent.Info($"BaseUrl={BaseUrl}");
             ApplicationVersion =
                 TestContext.Parameters["applicationVersion"] == null

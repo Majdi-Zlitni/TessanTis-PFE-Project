@@ -1,22 +1,22 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using NUnit.Framework;
-using TessanTIS.AP.Pages.Abstraction;
-using TessanTIS.AP.Pages.Impl;
-using TessanTIS.AP.Workflow.Abstraction;
-using TessanTIS.AP.Workflow.Impl.Base;
+using TessanTIS.OrangeHRM.Pages.Abstraction;
+using TessanTIS.OrangeHRM.Pages.Impl;
+using TessanTIS.OrangeHRM.Workflow.Abstraction;
+using TessanTIS.OrangeHRM.Workflow.Impl.Base;
 using TessanTIS.Common.Core.Abstraction;
 
-namespace TessanTIS.AP.Workflow.Impl.Action
+namespace TessanTIS.OrangeHRM.Workflow.Impl.Action
 {
-    public class AccessWorkflowAction : WorkflowBase, IAccessWorkflowAction
+    public class OrangeHRMAccessWorkflowAction : WorkflowBase, IOrangeHRMAccessWorkflowAction
     {
         private readonly IHomePage homePage = null;
         private readonly ILoginPage loginPage = null;
 
-        public AccessWorkflowAction(IBrowserHelper browserHelper, IReportHelper extent)
+        public OrangeHRMAccessWorkflowAction(IBrowserHelper browserHelper, IReportHelper extent)
         {
             this.browser = browserHelper;
             this.extent = extent;
@@ -87,3 +87,4 @@ namespace TessanTIS.AP.Workflow.Impl.Action
         }
     }
 }
+

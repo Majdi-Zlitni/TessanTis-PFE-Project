@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="4.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TessanTIS.OrangeHRM.Workflow.Abstraction\TessanTIS.OrangeHRM.Workflow.Abstraction.csproj" />
+    <ProjectReference Include="..\TessanTIS.OrangeHRM.Pages.Abstraction\TessanTIS.OrangeHRM.Pages.Abstraction.csproj" />
+    <ProjectReference Include="..\TessanTIS.OrangeHRM.Pages.Impl\TessanTIS.OrangeHRM.Pages.Impl.csproj" />
+    <ProjectReference Include="..\TessanTIS.OrangeHRM.Workflow.Impl.Base\TessanTIS.OrangeHRM.Workflow.Impl.Base.csproj" />
+    <ProjectReference Include="..\TessanTIS.OrangeHRM.Data.Abstraction\TessanTIS.OrangeHRM.Data.Abstraction.csproj" />
+    <ProjectReference Include="..\TessanTIS.OrangeHRM.Data.Impl\TessanTIS.OrangeHRM.Data.Impl.csproj" />
+  </ItemGroup>
+
+</Project>
