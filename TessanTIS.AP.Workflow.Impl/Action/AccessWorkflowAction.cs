@@ -13,13 +13,15 @@ namespace TessanTIS.AP.Workflow.Impl.Action
 {
     public class AccessWorkflowAction : WorkflowBase, IAccessWorkflowAction
     {
+        private readonly string baseUrl;
         private readonly IHomePage homePage = null;
         private readonly ILoginPage loginPage = null;
 
-        public AccessWorkflowAction(IBrowserHelper browserHelper, IReportHelper extent)
+        public AccessWorkflowAction(IBrowserHelper browserHelper, IReportHelper extent, string baseUrl)
         {
             this.browser = browserHelper;
             this.extent = extent;
+            this.baseUrl = baseUrl;
             if (homePage == null)
                 homePage = new HomePage(browser, extent);
             if (loginPage == null)
@@ -30,7 +32,7 @@ namespace TessanTIS.AP.Workflow.Impl.Action
         {
             try
             {
-                browser.Goto("https://opensource-demo.orangehrmlive.com");
+                browser.Goto(baseUrl);
             }
             catch (Exception ex)
             {

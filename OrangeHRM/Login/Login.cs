@@ -15,7 +15,13 @@ namespace OrangeHRM.Login
         }
 
         [Test, Order(2)]
-        public void TC001_Automate_User_Registration_process_of_e_commerce_website()
+        public void TC001_Automate_User_Login()
+        {
+            ExecuteWorkflow();
+        }
+
+        [Test, Order(2)]
+        public void TC001_Automate_login()
         {
             ExecuteWorkflow();
         }

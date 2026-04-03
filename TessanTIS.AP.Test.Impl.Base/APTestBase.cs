@@ -75,7 +75,7 @@ namespace TessanTIS.AP.Test.Impl.Base
              loginWorkflowVerification = unityContainer.Resolve<ILoginWorkflowVerification>();*/
 
             unityContainer.RegisterType<IAccessWorkflowAction, AccessWorkflowAction>(
-                new InjectionConstructor(browser, extent)
+                new InjectionConstructor(browser, extent, BaseUrl)
             );
             accessWorkflowAction = unityContainer.Resolve<IAccessWorkflowAction>();
 

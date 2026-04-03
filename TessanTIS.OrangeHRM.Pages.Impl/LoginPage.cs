@@ -4,10 +4,10 @@ using System.Reflection;
 using System.Text;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using TessanTIS.OrangeHRM.Pages.Abstraction;
 using TessanTIS.Common.Core.Abstraction;
 using TessanTIS.Common.Core.Impl.Configuration;
 using TessanTIS.Common.Core.Pages.Impl.Base;
+using TessanTIS.OrangeHRM.Pages.Abstraction;
 
 namespace TessanTIS.OrangeHRM.Pages.Impl
 {
@@ -35,6 +35,16 @@ namespace TessanTIS.OrangeHRM.Pages.Impl
         private readonly By errorMessage = By.XPath("//*[@id=\"create_account_error\"]/ol/li");
         private readonly By emptyFieldsErrorMessage = By.XPath("//*[@id=\"center_column\"]/div/p");
 
+        private readonly By usernameInputXpath = By.XPath(
+            "//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/div[2]/input"
+        );
+        private readonly By passwordInputXpath = By.XPath(
+            "//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[2]/div/div[2]/input"
+        );
+        private readonly By loginbutton = By.XPath(
+            "//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button"
+        );
+
         public LoginPage(
             IBrowserHelper browserHelper,
             IReportHelper reportHelper,
@@ -52,7 +62,7 @@ namespace TessanTIS.OrangeHRM.Pages.Impl
         {
             try
             {
-                browserHelper.SetText(txtLogin, login);
+                browserHelper.SetText(usernameInputXpath, login);
                 reportHelper.Info("SetLogin OK");
                 loggerHelper.Info("SetLogin OK");
             }
@@ -74,9 +84,29 @@ namespace TessanTIS.OrangeHRM.Pages.Impl
         {
             try
             {
-                browserHelper.SetText(txtPassword, password);
+                browserHelper.SetText(passwordInputXpath, password);
                 reportHelper.Info("setPassword OK");
                 loggerHelper.Info("setPassword OK");
+            }
+            catch (Exception ex)
+            {
+                loggerHelper.Error(
+                    $"{MethodBase.GetCurrentMethod().Name} crasherd: Exception: {ex.Message}"
+                );
+                reportHelper.SetStepStatusFail(
+                    TestContext.CurrentContext.Test.Name,
+                    stepNumber,
+                    $"{MethodBase.GetCurrentMethod().Name} crasherd: Exception: {ex.Message}"
+                );
+                throw;
+            }
+        }
+
+        public void ClickLogin(int stepNumber)
+        {
+            try
+            {
+                browserHelper.ClickButton(loginbutton);
             }
             catch (Exception ex)
             {
@@ -504,4 +534,3 @@ namespace TessanTIS.OrangeHRM.Pages.Impl
         }
     }
 }
-

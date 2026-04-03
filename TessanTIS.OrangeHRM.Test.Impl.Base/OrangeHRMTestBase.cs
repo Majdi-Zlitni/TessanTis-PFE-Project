@@ -71,7 +71,7 @@ namespace TessanTIS.OrangeHRM.Test.Impl.Base
             unityContainer.RegisterType<
                 IOrangeHRMAccessWorkflowAction,
                 OrangeHRMAccessWorkflowAction
-            >(new InjectionConstructor(browser, extent));
+            >(new InjectionConstructor(browser, extent, BaseUrl));
             accessWorkflowAction = unityContainer.Resolve<IOrangeHRMAccessWorkflowAction>();
 
             unityContainer.RegisterType<IOrangeHRMWorkflowAction, OrangeHRMWorkflowAction>(
@@ -91,12 +91,20 @@ namespace TessanTIS.OrangeHRM.Test.Impl.Base
         {
             switch (actionKeyWord)
             {
-                case "OpenAutomationPracticeWebSite":
-                    accessWorkflowAction.OpenAutomationPracticeWebSite(stepNumber);
+                case "OpenOrangeHRMWebSite":
+                    accessWorkflowAction.OpenOrangeHRMWebSite(stepNumber);
                     break;
                 case "LoginWithCorrectCredential":
                     loginWorkflowAction.LoginWithCorrectCredential(stepNumber);
                     break;
+                case "VerifyUserLoggedInSuccessfully":
+                    orangeHRMWorkflowVerification.VerifyUserLoggedInSuccessfully(stepNumber);
+                    break;
+
+                case "OpenAutomationPracticeWebSite":
+                    accessWorkflowAction.OpenAutomationPracticeWebSite(stepNumber);
+                    break;
+
                 case "AccessToLoginPage":
                     accessWorkflowAction.AccessToLoginPage(stepNumber);
                     break;

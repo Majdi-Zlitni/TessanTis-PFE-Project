@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using NUnit.Framework;
+using TessanTIS.Common.Core.Abstraction;
+using TessanTIS.Common.Core.Impl.Configuration;
 using TessanTIS.OrangeHRM.Data.Abstraction;
 using TessanTIS.OrangeHRM.Pages.Abstraction;
 using TessanTIS.OrangeHRM.Pages.Impl;
 using TessanTIS.OrangeHRM.Workflow.Abstraction;
 using TessanTIS.OrangeHRM.Workflow.Impl.Base;
-using TessanTIS.Common.Core.Abstraction;
-using TessanTIS.Common.Core.Impl.Configuration;
 
 namespace TessanTIS.OrangeHRM.Workflow.Impl.Action
 {
@@ -47,6 +47,7 @@ namespace TessanTIS.OrangeHRM.Workflow.Impl.Action
                 loginPage.setLogin(data[loginData.ValidUserName], stepNumber);
                 loginPage.setPassword(data[loginData.ValidPassword], stepNumber);
                 loginPage.ClickSubmitLogin(stepNumber);
+                loginPage.ClickLogin(stepNumber);
             }
             catch (Exception ex)
             {
@@ -63,4 +64,3 @@ namespace TessanTIS.OrangeHRM.Workflow.Impl.Action
         }
     }
 }
-

@@ -79,6 +79,44 @@ namespace TessanTIS.OrangeHRM.Workflow.Impl.Verification
             }
         }
 
+        public void VerifyUserLoggedInSuccessfully(int stepNumber)
+        {
+            try
+            {
+                string userName = profilPage.GetUserName(stepNumber);
+                if (!string.IsNullOrWhiteSpace(userName))
+                {
+                    extent.SetStepStatusPass(
+                        TestContext.CurrentContext.Test.Name,
+                        stepNumber,
+                        $"User logged in successfully as {userName}"
+                    );
+                    logging.Info($"User logged in successfully as {userName}");
+                }
+                else
+                {
+                    extent.SetStepStatusFail(
+                        TestContext.CurrentContext.Test.Name,
+                        stepNumber,
+                        "User login verification failed: profile username is empty"
+                    );
+                    logging.Error("User login verification failed: profile username is empty");
+                }
+            }
+            catch (Exception ex)
+            {
+                logging.Error(
+                    $"{MethodBase.GetCurrentMethod().Name} crashed : Exception : {ex.Message}"
+                );
+                extent.SetStepStatusFail(
+                    TestContext.CurrentContext.Test.Name,
+                    stepNumber,
+                    $"{MethodBase.GetCurrentMethod().Name} crashed : Exception : {ex.Message}"
+                );
+                throw;
+            }
+        }
+
         public void VerifyErrorMessageForSignUpFirstStep(int stepNumber)
         {
             try

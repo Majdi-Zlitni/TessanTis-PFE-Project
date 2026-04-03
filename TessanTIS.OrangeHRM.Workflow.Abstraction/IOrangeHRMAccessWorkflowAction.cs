@@ -5,5 +5,6 @@ namespace TessanTIS.OrangeHRM.Workflow.Abstraction
         void AccessToLoginPage(int stepNumber);
         void AccessToWomenTShirt(int stepNumber);
         void OpenAutomationPracticeWebSite(int stepNumber);
+        void OpenOrangeHRMWebSite(int stepNumber);
     }
 }

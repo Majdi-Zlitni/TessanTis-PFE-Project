@@ -6,6 +6,7 @@ namespace TessanTIS.OrangeHRM.Pages.Abstraction
 {
     public interface ILoginPage
     {
+        void ClickLogin(int stepNumber);
         void ClickSubmitCreate(int stepNumber);
         void ClickSubmitCreateAccount(int stepNumber);
         void ClickSubmitLogin(int stepNumber);
@@ -30,4 +31,3 @@ namespace TessanTIS.OrangeHRM.Pages.Abstraction
         void SetTitle(int stepNumber, string genderId);
     }
 }
-
