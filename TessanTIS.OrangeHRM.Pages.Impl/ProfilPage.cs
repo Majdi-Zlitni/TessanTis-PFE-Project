@@ -13,6 +13,9 @@ namespace TessanTIS.OrangeHRM.Pages.Impl
 {
     public class ProfilPage : PageBase, IProfilPage
     {
+        private readonly By brandLogo = By.CssSelector("img[alt='client brand banner']");
+        private readonly By dashboardHeader = By.XPath("//h6[text()='Dashboard']");
+        private readonly By sidebarDashboard = By.XPath("//span[text()='Dashboard']");
         private readonly By userNameText = By.XPath(
             "//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a"
         );
@@ -34,6 +37,86 @@ namespace TessanTIS.OrangeHRM.Pages.Impl
             try
             {
                 return browserHelper.GetText(userNameText);
+            }
+            catch (Exception ex)
+            {
+                loggerHelper.Error(
+                    $"{MethodBase.GetCurrentMethod().Name} crasherd: Exception: {ex.Message}"
+                );
+                reportHelper.SetStepStatusFail(
+                    TestContext.CurrentContext.Test.Name,
+                    stepNumber,
+                    $"{MethodBase.GetCurrentMethod().Name} crasherd: Exception: {ex.Message}"
+                );
+                throw;
+            }
+        }
+
+        public bool IsBrandLogoDisplayed(int stepNumber)
+        {
+            try
+            {
+                return browserHelper.ElementIsDisplayed(brandLogo);
+            }
+            catch (Exception ex)
+            {
+                loggerHelper.Error(
+                    $"{MethodBase.GetCurrentMethod().Name} crasherd: Exception: {ex.Message}"
+                );
+                reportHelper.SetStepStatusFail(
+                    TestContext.CurrentContext.Test.Name,
+                    stepNumber,
+                    $"{MethodBase.GetCurrentMethod().Name} crasherd: Exception: {ex.Message}"
+                );
+                throw;
+            }
+        }
+
+        public bool IsDashboardHeaderDisplayed(int stepNumber)
+        {
+            try
+            {
+                return browserHelper.ElementIsDisplayed(dashboardHeader);
+            }
+            catch (Exception ex)
+            {
+                loggerHelper.Error(
+                    $"{MethodBase.GetCurrentMethod().Name} crasherd: Exception: {ex.Message}"
+                );
+                reportHelper.SetStepStatusFail(
+                    TestContext.CurrentContext.Test.Name,
+                    stepNumber,
+                    $"{MethodBase.GetCurrentMethod().Name} crasherd: Exception: {ex.Message}"
+                );
+                throw;
+            }
+        }
+
+        public bool IsSidebarDashboardDisplayed(int stepNumber)
+        {
+            try
+            {
+                return browserHelper.ElementIsDisplayed(sidebarDashboard);
+            }
+            catch (Exception ex)
+            {
+                loggerHelper.Error(
+                    $"{MethodBase.GetCurrentMethod().Name} crasherd: Exception: {ex.Message}"
+                );
+                reportHelper.SetStepStatusFail(
+                    TestContext.CurrentContext.Test.Name,
+                    stepNumber,
+                    $"{MethodBase.GetCurrentMethod().Name} crasherd: Exception: {ex.Message}"
+                );
+                throw;
+            }
+        }
+
+        public string GetPageTitle(int stepNumber)
+        {
+            try
+            {
+                return browserHelper.Driver.Title;
             }
             catch (Exception ex)
             {

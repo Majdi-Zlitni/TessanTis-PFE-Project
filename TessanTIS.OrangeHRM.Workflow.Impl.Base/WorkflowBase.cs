@@ -49,6 +49,9 @@ namespace TessanTIS.OrangeHRM.Workflow.Impl.Base
             unityContainer.RegisterType<ISearchPage, SearchPage>(
                 new InjectionConstructor(browserHelper, reportHelper, logger)
             );
+            unityContainer.RegisterType<IPimPage, PimPage>(
+                new InjectionConstructor(browserHelper, reportHelper, logger)
+            );
         }
     }
 }

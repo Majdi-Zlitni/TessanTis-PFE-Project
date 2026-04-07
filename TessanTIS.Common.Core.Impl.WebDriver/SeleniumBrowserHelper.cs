@@ -67,11 +67,9 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
         {
             try
             {
-#pragma warning disable CS0618 // ExpectedConditions is obsolete
                 IWebElement inputWebElement = webDriverWait.Until(
                     ExpectedConditions.ElementIsVisible(by)
                 );
-#pragma warning restore CS0618 // ExpectedConditions is obsolete
                 inputWebElement.Clear();
                 Thread.Sleep(1000);
             }
@@ -142,11 +140,9 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
         {
             try
             {
-#pragma warning disable CS0618 // ExpectedConditions is obsolete
                 IWebElement buttonWebElement = webDriverWait.Until(
                     ExpectedConditions.ElementToBeClickable(button)
                 );
-#pragma warning restore CS0618 // ExpectedConditions is obsolete
                 buttonWebElement.SendKeys(Keys.Return);
                 Thread.Sleep(2000);
             }
@@ -160,21 +156,17 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
 
         public void ClickFirstFromList(By list, string text)
         {
-#pragma warning disable CS0618 // ExpectedConditions is obsolete
             IWebElement webElement = webDriverWait
                 .Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(list))
                 .FirstOrDefault(x => x.Text == text);
-#pragma warning restore CS0618 // ExpectedConditions is obsolete
             webElement.Click();
         }
 
         public void ClickFirstFromListUsingSendKey(By list, string text)
         {
-#pragma warning disable CS0618 // ExpectedConditions is obsolete
             IWebElement webElement = webDriverWait
                 .Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(list))
                 .FirstOrDefault(x => x.Text == text);
-#pragma warning restore CS0618 // ExpectedConditions is obsolete
             webElement.SendKeys(Keys.Return);
             Thread.Sleep(2000);
         }
@@ -198,11 +190,9 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
         {
             try
             {
-#pragma warning disable CS0618 // ExpectedConditions is obsolete
                 IWebElement tableWebElement = webDriverWait.Until(
                     ExpectedConditions.ElementIsVisible(table)
                 );
-#pragma warning restore CS0618 // ExpectedConditions is obsolete
                 IWebElement cellWebElemnt = tableWebElement.FindElement(cell);
                 cellWebElemnt.Click();
             }
@@ -234,9 +224,7 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
         {
             try
             {
-#pragma warning disable CS0618 // ExpectedConditions is obsolete
                 return webDriverWait.Until(ExpectedConditions.ElementExists(element)).Displayed;
-#pragma warning restore CS0618 // ExpectedConditions is obsolete
             }
             catch (Exception ex)
             {
@@ -251,9 +239,7 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
         {
             try
             {
-#pragma warning disable CS0618 // ExpectedConditions is obsolete
                 return webDriverWait.Until(ExpectedConditions.ElementIsVisible(element)).Displayed;
-#pragma warning restore CS0618 // ExpectedConditions is obsolete
             }
             catch (Exception ex)
             {
@@ -284,9 +270,7 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
         {
             try
             {
-#pragma warning disable CS0618 // ExpectedConditions is obsolete
                 return webDriverWait.Until(ExpectedConditions.ElementIsVisible(element)).Enabled;
-#pragma warning restore CS0618 // ExpectedConditions is obsolete
             }
             catch (Exception ex)
             {
@@ -301,9 +285,8 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
         {
             try
             {
-#pragma warning disable CS0618 // Type or member is obsolete
                 webDriverWait.Until(ExpectedConditions.ElementExists(element));
-#pragma warning restore CS0618 // Type or member is obsolete
+
                 return true;
             }
             catch (Exception ex)
@@ -318,9 +301,7 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
 
         public void ElementToBeClickable(By element)
         {
-#pragma warning disable CS0618 // Type or member is obsolete
             webDriverWait.Until(ExpectedConditions.ElementToBeClickable(element));
-#pragma warning restore CS0618 // Type or member is obsolete
         }
 
         public void EnterKey()
@@ -362,9 +343,7 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
             IWebElement tableWebElement = null;
             try
             {
-#pragma warning disable CS0618 // Type or member is obsolete
                 tableWebElement = webDriverWait.Until(ExpectedConditions.ElementIsVisible(by));
-#pragma warning restore CS0618 // Type or member is obsolete
             }
             catch (Exception ex)
             {
@@ -381,9 +360,7 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
             IWebElement WebElement = null;
             try
             {
-#pragma warning disable CS0618 // Type or member is obsolete
                 WebElement = webDriverWait.Until(ExpectedConditions.ElementExists(by));
-#pragma warning restore CS0618 // Type or member is obsolete
             }
             catch (Exception ex)
             {
@@ -399,9 +376,8 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
         {
             try
             {
-#pragma warning disable CS0618 // Type or member is obsolete
                 webDriverWait.Until(ExpectedConditions.AlertIsPresent());
-#pragma warning restore CS0618 // Type or member is obsolete
+
                 IAlert alert = Driver.SwitchTo().Alert();
                 string msg = alert.Text;
                 try
@@ -428,11 +404,9 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
             string attributValue = string.Empty;
             try
             {
-#pragma warning disable CS0618 // Type or member is obsolete
                 attributValue = webDriverWait
                     .Until(ExpectedConditions.ElementExists(element))
                     .GetAttribute(attribute);
-#pragma warning restore CS0618 // Type or member is obsolete
             }
             catch (Exception ex)
             {
@@ -448,12 +422,10 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
             List<IWebElement> tableWebElement = null;
             try
             {
-#pragma warning disable CS0618 // Type or member is obsolete
                 tableWebElement = webDriverWait
                     .Until(ExpectedConditions.ElementIsVisible(by))
                     .FindElements(by)
                     .ToList();
-#pragma warning restore CS0618 // Type or member is obsolete
             }
             catch (Exception ex)
             {
@@ -470,12 +442,10 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
             List<IWebElement> tableWebElement = null;
             try
             {
-#pragma warning disable CS0618 // Type or member is obsolete
                 tableWebElement = webDriverWait
                     .Until(ExpectedConditions.ElementExists(by))
                     .FindElements(by)
                     .ToList();
-#pragma warning restore CS0618 // Type or member is obsolete
             }
             catch (Exception ex)
             {
@@ -491,9 +461,8 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
         {
             try
             {
-#pragma warning disable CS0618 // Type or member is obsolete
                 webDriverWait.Until(ExpectedConditions.AlertIsPresent());
-#pragma warning restore CS0618 // Type or member is obsolete
+
                 return Driver.SwitchTo().Alert().Text;
             }
             catch (Exception ex)
@@ -508,11 +477,10 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
         public string GetProperty(By element, string property)
         {
             ngWebDriver.WaitForAngular();
-#pragma warning disable CS0618 // Type or member is obsolete
+
             return webDriverWait
                 .Until(ExpectedConditions.ElementExists(element))
                 .GetDomProperty(property);
-#pragma warning restore CS0618 // Type or member is obsolete
         }
 
         public int GetRowsCount(By by)
@@ -526,9 +494,9 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
             try
             {
                 //ngWebDriver.WaitForAngular();
-#pragma warning disable CS0618 // Type or member is obsolete
+
                 webDriverWait.Until(ExpectedConditions.ElementExists(textInput));
-#pragma warning restore CS0618 // Type or member is obsolete
+
                 return webDriver.FindElement(textInput).Text;
             }
             catch (StaleElementReferenceException ex)
@@ -541,9 +509,9 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
                         + "Retreying to getText an other Time"
                 );
                 this.ElementIsVisible(textInput);
-#pragma warning disable CS0618 // Type or member is obsolete
+
                 webDriverWait.Until(ExpectedConditions.ElementExists(textInput));
-#pragma warning restore CS0618 // Type or member is obsolete
+
                 return ngWebDriver.FindElement(textInput).Text;
             }
         }
@@ -592,7 +560,6 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
                     "Browser discovery via registry is only supported on Windows."
                 );
 
-            List<Browser> browserList = BrowserUtility.GetBrowsers();
             switch (browser)
             {
                 case "IE":
@@ -635,9 +602,7 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
         {
             try
             {
-#pragma warning disable CS0618 // Type or member is obsolete
                 webDriverWait.Until(ExpectedConditions.InvisibilityOfElementLocated(element));
-#pragma warning restore CS0618 // Type or member is obsolete
                 return true;
             }
             catch (Exception ex)
@@ -653,9 +618,7 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
         {
             try
             {
-#pragma warning disable CS0618 // Type or member is obsolete
                 return webDriverWait.Until(ExpectedConditions.AlertState(false));
-#pragma warning restore CS0618 // Type or member is obsolete
             }
             catch (Exception ex)
             {
@@ -670,9 +633,8 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
         {
             try
             {
-#pragma warning disable CS0618 // Type or member is obsolete
                 webDriverWait.Until(ExpectedConditions.ElementToBeClickable(element));
-#pragma warning restore CS0618 // Type or member is obsolete
+
                 return true;
             }
             catch (Exception ex)
@@ -832,11 +794,10 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
         {
             try
             {
-#pragma warning disable CS0618 // Type or member is obsolete
                 IWebElement inputWebElement = webDriverWait.Until(
                     ExpectedConditions.ElementIsVisible(textInput)
                 );
-#pragma warning restore CS0618 // Type or member is obsolete
+
                 inputWebElement.Clear();
                 inputWebElement.SendKeys(text);
             }
@@ -856,11 +817,10 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
         {
             try
             {
-#pragma warning disable CS0618 // Type or member is obsolete
                 IWebElement LocalMatInput = webDriverWait.Until(
                     ExpectedConditions.ElementExists(textInput)
                 );
-#pragma warning restore CS0618 // Type or member is obsolete
+
                 LocalMatInput.Clear();
                 LocalMatInput.SendKeys(text);
             }
@@ -905,16 +865,13 @@ namespace TessanTIS.Common.Core.Impl.WebDriver
 
         public void WaitForElementToBeVisible(By by)
         {
-#pragma warning disable CS0618 // Type or member is obsolete
             webDriverWait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(by));
-#pragma warning restore CS0618 // Type or member is obsolete
         }
 
         public void ClickRadio(By by)
         {
-#pragma warning disable CS0618 // Type or member is obsolete
             IWebElement radio = webDriverWait.Until(ExpectedConditions.ElementExists(by));
-#pragma warning restore CS0618 // Type or member is obsolete
+
             radio.Click();
         }
 

@@ -4,6 +4,8 @@ using TessanTIS.Common.Core.Impl.Data;
 using TessanTIS.Common.Core.Test.Impl.Base;
 using TessanTIS.OrangeHRM.Data.Abstraction;
 using TessanTIS.OrangeHRM.Data.Impl;
+using TessanTIS.OrangeHRM.Pages.Abstraction;
+using TessanTIS.OrangeHRM.Pages.Impl;
 using TessanTIS.OrangeHRM.Workflow.Abstraction;
 using TessanTIS.OrangeHRM.Workflow.Impl.Action;
 using TessanTIS.OrangeHRM.Workflow.Impl.Verification;
@@ -18,11 +20,13 @@ namespace TessanTIS.OrangeHRM.Test.Impl.Base
         private OrangeHRMData orangeHRMData = null;
         private OrangeHRMConfigurationData orangeHRMConfigurationData = null;
         private IOrangeHRMLoginData loginData = null;
+        private IOrangeHRMPimData pimData = null;
 
         private IOrangeHRMLoginWorkflowAction loginWorkflowAction = null;
         private IOrangeHRMAccessWorkflowAction accessWorkflowAction = null;
         private IOrangeHRMWorkflowAction orangeHRMWorkflowAction = null;
         private IOrangeHRMWorkflowVerification orangeHRMWorkflowVerification = null;
+        private IOrangeHRMPimWorkflowAction pimWorkflowAction = null;
 
         [Dependency]
         public string Type { get; set; }
@@ -85,6 +89,19 @@ namespace TessanTIS.OrangeHRM.Test.Impl.Base
             >(new InjectionConstructor(browser, extent, orangeHRMData, logging));
             orangeHRMWorkflowVerification =
                 unityContainer.Resolve<IOrangeHRMWorkflowVerification>();
+
+            unityContainer.RegisterType<IPimPage, PimPage>(
+                new InjectionConstructor(browser, extent, logging)
+            );
+            unityContainer.RegisterType<IOrangeHRMPimData, OrangeHRMPimData>(
+                new InjectionConstructor(TestContext.CurrentContext.Test.Name, "OrangeHRM", Type)
+            );
+            pimData = unityContainer.Resolve<IOrangeHRMPimData>();
+
+            unityContainer.RegisterType<IOrangeHRMPimWorkflowAction, OrangeHRMPimWorkflowAction>(
+                new InjectionConstructor(unityContainer.Resolve<IPimPage>(), pimData)
+            );
+            pimWorkflowAction = unityContainer.Resolve<IOrangeHRMPimWorkflowAction>();
         }
 
         public override void ExecuteAction(int stepNumber, string actionKeyWord)
@@ -94,49 +111,26 @@ namespace TessanTIS.OrangeHRM.Test.Impl.Base
                 case "OpenOrangeHRMWebSite":
                     accessWorkflowAction.OpenOrangeHRMWebSite(stepNumber);
                     break;
+                case "VerifyOpenOrangeHRMWebSiteSuccessfully":
+                    orangeHRMWorkflowVerification.VerifyOpenOrangeHRMWebSiteSuccessfully(stepNumber);
+                    break;
                 case "LoginWithCorrectCredential":
                     loginWorkflowAction.LoginWithCorrectCredential(stepNumber);
                     break;
                 case "VerifyUserLoggedInSuccessfully":
                     orangeHRMWorkflowVerification.VerifyUserLoggedInSuccessfully(stepNumber);
                     break;
-
-                case "OpenAutomationPracticeWebSite":
-                    accessWorkflowAction.OpenAutomationPracticeWebSite(stepNumber);
+                case "NavigateToPim":
+                    pimWorkflowAction.NavigateToPim(stepNumber);
                     break;
-
-                case "AccessToLoginPage":
-                    accessWorkflowAction.AccessToLoginPage(stepNumber);
+                case "VerifyNavigateToPimSuccessfully":
+                    orangeHRMWorkflowVerification.VerifyNavigateToPimSuccessfully(stepNumber);
                     break;
-                case "CreateAccountFirstStep":
-                    orangeHRMWorkflowAction.CreateAccountFirstStep(stepNumber);
+                case "AddEmployee":
+                    pimWorkflowAction.AddEmployee(stepNumber);
                     break;
-                case "CreateAccountSecondStep":
-                    orangeHRMWorkflowAction.CreateAccountSecondStep(stepNumber);
-                    break;
-                case "CreateAccountSecondStepWithEmptyFields":
-                    orangeHRMWorkflowAction.CreateAccountSecondStepWithEmptyFields(stepNumber);
-                    break;
-                case "VerifyUserAccountCreatedSuccefuly":
-                    orangeHRMWorkflowVerification.VerifyUserAccountCreatedSuccefuly(stepNumber);
-                    break;
-                case "VerifyErrorMessageForSignUpFirstStep":
-                    orangeHRMWorkflowVerification.VerifyErrorMessageForSignUpFirstStep(stepNumber);
-                    break;
-                case "VerifyErrorMessageForEmptyFields":
-                    orangeHRMWorkflowVerification.VerifyErrorMessageForEmptyFields(stepNumber);
-                    break;
-                case "AccessToWomenTShirt":
-                    accessWorkflowAction.AccessToWomenTShirt(stepNumber);
-                    break;
-                case "SaveFirstProductName":
-                    orangeHRMWorkflowAction.SaveFirstProductName(stepNumber);
-                    break;
-                case "SearchForProduct":
-                    orangeHRMWorkflowAction.SearchForProduct(stepNumber);
-                    break;
-                case "VerifyProductDisplayedSuccessfuly":
-                    orangeHRMWorkflowVerification.VerifyProductDisplayedSuccessfuly(stepNumber);
+                case "VerifyEmployeeAddedSuccessfully":
+                    orangeHRMWorkflowVerification.VerifyEmployeeAddedSuccessfully(stepNumber);
                     break;
                 default:
                     throw new Exception("given action not found!");

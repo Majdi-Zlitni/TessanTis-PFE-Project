@@ -44,9 +44,8 @@ namespace TessanTIS.OrangeHRM.Workflow.Impl.Action
         {
             try
             {
-                loginPage.setLogin(data[loginData.ValidUserName], stepNumber);
-                loginPage.setPassword(data[loginData.ValidPassword], stepNumber);
-                loginPage.ClickSubmitLogin(stepNumber);
+                loginPage.setLogin(Datas[stepNumber][loginData.ValidUserName], stepNumber);
+                loginPage.setPassword(Datas[stepNumber][loginData.ValidPassword], stepNumber);
                 loginPage.ClickLogin(stepNumber);
             }
             catch (Exception ex)

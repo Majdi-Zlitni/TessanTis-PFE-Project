@@ -29,5 +29,6 @@ namespace TessanTIS.OrangeHRM.Pages.Abstraction
         void SetPhoneNumber(int stepNumber, string phoneNumber);
         void SetPostCode(int stepNumber, string PostCode);
         void SetTitle(int stepNumber, string genderId);
+        bool IsLoginButtonDisplayed(int stepNumber);
     }
 }

@@ -41,9 +41,7 @@ namespace TessanTIS.OrangeHRM.Pages.Impl
         private readonly By passwordInputXpath = By.XPath(
             "//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[2]/div/div[2]/input"
         );
-        private readonly By loginbutton = By.XPath(
-            "//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button"
-        );
+        private readonly By loginbutton = By.CssSelector("button.orangehrm-login-button");
 
         public LoginPage(
             IBrowserHelper browserHelper,
@@ -119,6 +117,21 @@ namespace TessanTIS.OrangeHRM.Pages.Impl
                     $"{MethodBase.GetCurrentMethod().Name} crasherd: Exception: {ex.Message}"
                 );
                 throw;
+            }
+        }
+
+        public bool IsLoginButtonDisplayed(int stepNumber)
+        {
+            try
+            {
+                return browserHelper.ElementIsVisible(loginbutton);
+            }
+            catch (Exception ex)
+            {
+                loggerHelper.Error(
+                    $"{MethodBase.GetCurrentMethod().Name} crasherd: Exception: {ex.Message}"
+                );
+                return false;
             }
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using TessanTIS.Common.Core.Abstraction;
@@ -16,8 +17,6 @@ namespace TessanTIS.Common.Core.Test.Impl.Base
     [TestFixture]
     public abstract class TestBase
     {
-        //Comment
-        // test base class
         protected IBrowserHelper browser;
         protected IReportHelper extent;
         protected ILoggerHelper logging;
@@ -27,7 +26,6 @@ namespace TessanTIS.Common.Core.Test.Impl.Base
         public string BaseUrl;
         public string ApplicationVersion;
         public string DeviceName { get; set; }
-        public static string AppV { get; set; }
 
         [TearDown]
         public void AfterTest()
@@ -105,6 +103,7 @@ namespace TessanTIS.Common.Core.Test.Impl.Base
                 }
                 browser.init();
             }
+            //TODO: appium
         }
 
         private void InitializeParameters()
@@ -116,9 +115,8 @@ namespace TessanTIS.Common.Core.Test.Impl.Base
                 TestContext.Parameters["applicationVersion"] == null
                     ? string.Empty
                     : TestContext.Parameters["applicationVersion"];
-            AppV = "V1"; // ApplicationVersion;
-            extent.Info($"ApplicationVersion={AppV}");
-            DeviceName = TestContext.Parameters["deviceName"];
+            extent.Info($"ApplicationVersion={ApplicationVersion}");
+            DeviceName = Environment.MachineName;
             extent.Info($"DeviceName={DeviceName}");
             extent.Info("End Initialize Parameters");
             unityContainer = new UnityContainer();

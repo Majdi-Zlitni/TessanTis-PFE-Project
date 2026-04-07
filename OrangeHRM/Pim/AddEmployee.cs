@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using NUnit.Framework;
 using TessanTIS.OrangeHRM.Test.Impl.Base;
 
-namespace OrangeHRM.Login
+namespace OrangeHRM.Pim
 {
-    internal class Login : OrangeHRMTestBase
+    internal class AddEmployee : OrangeHRMTestBase
     {
         [SetUp, Order(1)]
         public void Setup()
         {
-            Type = "Login";
+            Type = "AddEmployee";
             PrepareSetup();
         }
 
         [Test, Order(2)]
-        public void TC001_Automate_User_Login()
+        public void TC002_Automate_Add_Employee()
         {
             ExecuteWorkflow();
         }
